@@ -1,0 +1,10 @@
+<launch>
+        <!-- Load robot description and start state publisher-->
+    <!--param name="robot_description" textfile="$(find sensehat_ros)/urdf/imu.urdf" /-->
+    <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /-->
+
+
+    <node name="imu_publisher" pkg="sensehat_ros" type="imu_publisher.py" respawn="false" output="screen" >
+    </node>
+
+</launch>
