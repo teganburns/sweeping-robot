@@ -1,12 +1,3 @@
-# Copyright 2020, Stefano Dell'Orto
-# License: BSD
-#   https://raw.githubusercontent.com/allxone/sensehat_ros/master/LICENSE
-#
-##############################################################################
-# Imports
-##############################################################################
-
-
 import collections
 from threading import Lock
 

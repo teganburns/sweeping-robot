@@ -6,8 +6,8 @@ from threading import Lock
 
 import rospy
 from sensor_msgs.msg import Imu
-from sensehat_ros.msg import Environmental, IMU, Stick
-from sensehat_ros.srv import *
+#from sensehat_ros.msg import Environmental, IMU, Stick
+#from sensehat_ros.srv import *
 
 import tf2_ros
 

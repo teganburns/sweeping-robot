@@ -3,17 +3,17 @@
   href="http://download.ros.org/schema/package_format3.xsd"
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>sensehat_ros</name>
+  <name>imu</name>
   <version>0.1.0</version>
-  <description>sensehat_ros is a ROS package to interact with Astro Pi Sense HAT sensors, stick and LED matrix.</description>
+  <description>Eat a dik</description>
   
-  <author email="allxone@hotmail.com">Stefano Dell'Orto</author>
-  <license>BSD</license>
-  <maintainer email="allxone@hotmail.com">Stefano Dell'Orto</maintainer>
+  <author email="ros@tegan.dev">Tegan Burns</author>
+  <license>Proprietary</license>
+  <maintainer email="ros@tegan.dev">Tegan Burns</maintainer>
 
-  <url type="website">http://wiki.ros.org/sensehat_ros</url>
-  <url type="repository">http://www.github.com/allxone/sensehat_ros</url>
-  <url type="bugtracker">http://www.github.com/allxone/sensehat_ros/issues</url>
+  <url type="website">https://tegan.dev/</url>
+  <url type="repository">https://github.com/teganburns/sweeping-robot</url>
+  <url type="bugtracker">https://github.com/teganburns/sweeping-robot/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-setuptools</buildtool_depend>
