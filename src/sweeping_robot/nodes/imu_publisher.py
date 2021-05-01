@@ -103,16 +103,16 @@ class Host(object):
         msg.orientation.x = 0.0
         msg.orientation.y = 0.0
         msg.orientation.z = 0.0
-        msg.orientation.w = 1.0
-        msg.orientation_covariance = [99999.9, 0.0, 0.0, 0.0, 99999.9, 0.0, 0.0, 0.0, 99999.9]
+        msg.orientation.w = 0.0
+        msg.orientation_covariance = [-1, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0]
         #msg.angular_velocity.x = gyr['x'] * np.pi
-        msg.angular_velocity.x = round( gyr['x'] * ( np.pi / 180 ), 4 )
-        msg.angular_velocity.y = round( gyr['y'] * ( np.pi / 180 ), 4 )
-        msg.angular_velocity.z = round( gyr['z'] * ( np.pi / 180 ), 4 )
+        msg.angular_velocity.x = round( gyr['x'] * ( np.pi / 180 ), 8 ) * (-1) # Inverted x axis
+        msg.angular_velocity.y = round( gyr['y'] * ( np.pi / 180 ), 8 )
+        msg.angular_velocity.z = round( gyr['z'] * ( np.pi / 180 ), 8 )
         msg.angular_velocity_covariance = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        msg.linear_acceleration.x = round((acc['x'] * gunit_to_mps_squ), 6 )
-        msg.linear_acceleration.y = round((acc['y'] * gunit_to_mps_squ), 6 )
-        msg.linear_acceleration.z = round((acc['z'] * gunit_to_mps_squ), 6 )
+        msg.linear_acceleration.x = round((acc['x'] * gunit_to_mps_squ), 8 ) * (-1) # Inverted x axis
+        msg.linear_acceleration.y = round((acc['y'] * gunit_to_mps_squ), 8 )
+        msg.linear_acceleration.z = round((acc['z'] * gunit_to_mps_squ), 8 )
         
         #msg.linear_acceleration.x = np.radians( acc['x'] ) 
         #msg.linear_acceleration.y = np.radians( acc['y'] ) 
