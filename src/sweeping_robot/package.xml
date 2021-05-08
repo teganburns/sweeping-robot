@@ -29,6 +29,10 @@
   <build_depend condition="$ROS_PYTHON_VERSION == 2">python-catkin-pkg</build_depend><!-- sphinx requirement -->
   <build_depend condition="$ROS_PYTHON_VERSION == 3">python3-catkin-pkg</build_depend><!-- sphinx requirement -->
 
+      <!-- I added this from gbot -->
+    <!--build_depend>sensor_msgs</build_depend-->
+    <!--build_depend>std_srvs</build_depend-->
+
   <build_export_depend>message_runtime</build_export_depend>
 
   <test_depend>rostest</test_depend>
@@ -38,6 +42,10 @@
 
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>python3-sense-hat-pip</exec_depend>
+
+      <!--I Added this from gbot-->
+    <!--exec_depend>sensor_msgs</exec_depend-->
+    <!--exec_depend>cartographer_ros</exec_depend-->
 
   <export>
     <architecture_independent />

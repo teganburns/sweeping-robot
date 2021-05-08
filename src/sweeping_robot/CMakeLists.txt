@@ -5,11 +5,20 @@ project(imu)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roslaunch
-  rospy
-  rostest
-  std_msgs
-)
+    roslib
+    cartographer_ros
+    geometry_msgs
+    tf
+    roslaunch
+    rospy
+    rostest
+    std_msgs
+    )
+
+
+find_package(cartographer REQUIRED)
+include("${CARTOGRAPHER_CMAKE_DIR}/functions.cmake")
+
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -31,11 +40,11 @@ catkin_python_setup()
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-# LIBRARIES sensehat_ros
-  CATKIN_DEPENDS rospy std_msgs
-#  DEPENDS system_lib
-)
+    #INCLUDE_DIRS include
+    LIBRARIES imu
+    CATKIN_DEPENDS rospy std_msgs
+    DEPENDS system_lib
+    )
 
 
 ###########
@@ -44,10 +53,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+#include_directories(
+#    include
+#    ${catkin_INCLUDE_DIRS}
+#    )
 
 
 #############

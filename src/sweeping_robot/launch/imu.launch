@@ -1,10 +1,17 @@
 <launch>
         <!-- Load robot description and start state publisher-->
-    <!--param name="robot_description" textfile="$(find imu)/urdf/imu.urdf" /-->
-    <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /-->
+    <param name="robot_description" textfile="$(find imu)/urdf/imu.urdf" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
 
     <node name="imu_publisher" pkg="imu" type="imu_publisher.py" respawn="false" output="screen" >
     </node>
+
+	<!-- Start Google Cartographer node with custom configuration file-->
+	<node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
+		-configuration_directory
+		$(find imu)/configuration_files
+		-configuration_basename cartographer_lidar_2d.lua" output="screen">
+	</node>
 
 </launch>
