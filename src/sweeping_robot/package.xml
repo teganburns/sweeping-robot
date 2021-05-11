@@ -47,9 +47,4 @@
     <!--exec_depend>sensor_msgs</exec_depend-->
     <!--exec_depend>cartographer_ros</exec_depend-->
 
-  <export>
-    <architecture_independent />
-    <rosdoc config="rosdoc.yaml"/>    
-  </export>
-
 </package>

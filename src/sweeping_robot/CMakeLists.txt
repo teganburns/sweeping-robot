@@ -13,7 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
     rospy
     rostest
     std_msgs
-    )
+)
 
 
 find_package(cartographer REQUIRED)
@@ -44,7 +44,7 @@ catkin_package(
     LIBRARIES imu
     CATKIN_DEPENDS rospy std_msgs
     DEPENDS system_lib
-    )
+)
 
 
 ###########
@@ -63,18 +63,22 @@ catkin_package(
 ## Install ##
 #############
 
-#catkin_install_python(
-#  PROGRAMS nodes/${PROJECT_NAME} 
-#  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#)
+catkin_install_python(
+  #PROGRAMS nodes/${PROJECT_NAME} 
+  PROGRAMS nodes/imu_publisher.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 #
-#install(DIRECTORY launch/
-#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
-#  )
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+)
 #
-#install(DIRECTORY config/
-#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/config
-#  )
+install(DIRECTORY configuration_files/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/configuration_files
+)
+install(DIRECTORY urdf/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+)
 #
 ##############
 ### Testing ##
