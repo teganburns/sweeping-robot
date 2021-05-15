@@ -5,7 +5,8 @@
 RPLIDAR_GIT='https://github.com/robopeak/rplidar_ros.git'
 CARTOGRAPHER_GIT='https://github.com/cartographer-project/cartographer.git'
 CARTOGRAPHER_ROS_GIT='https://github.com/cartographer-project/cartographer_ros.git'
-REPOS=( $RPLIDAR_GIT $CARTOGRAPHER_GIT $CARTOGRAPHER_ROS_GIT )
+ROS_ARDUINO_BRIDGE='https://github.com/teganburns/ROS_Arduino_bridge.git'
+REPOS=( $RPLIDAR_GIT $CARTOGRAPHER_GIT $CARTOGRAPHER_ROS_GIT $ROS_ARDUINO_BRIDGE)
 DIR='src/'
 
 # Text Colors
