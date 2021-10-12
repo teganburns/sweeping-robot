@@ -4,6 +4,7 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
 
+
     <node name="imu_publisher" pkg="imu" type="imu_publisher.py" respawn="false" output="screen" >
     </node>
 
@@ -16,6 +17,12 @@
         <param name="angle_compensate" type="bool" value="true"/>
     </node>
 
+
+   <node name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+      <rosparam file="$(find ros_arduino_python)/config/my_arduino_params.yaml" command="load" />
+   </node>
+
+
 		<!-- Start Google Cartographer node with custom configuration file-->
     <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
           -configuration_directory
@@ -25,6 +32,18 @@
 
 		<!-- Additional node which converts Cartographer map into ROS occupancy grid map. Not used and can be skipped in this case -->
     <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros" type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+
+
+    <include file="$(find amcl)/examples/amcl_omni.launch" />
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find imu)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find imu)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find imu)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find imu)/config/global_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find imu)/config/base_local_planner_params.yaml" command="load" />
+ </node>
 
 
 </launch>
