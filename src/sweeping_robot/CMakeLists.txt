@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(imu)
+project(sweeping_robot)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -41,7 +41,7 @@ catkin_python_setup()
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
     #INCLUDE_DIRS include
-    LIBRARIES imu
+    LIBRARIES sweeping_robot
     CATKIN_DEPENDS rospy std_msgs
     DEPENDS system_lib
 )
@@ -68,7 +68,14 @@ catkin_install_python(
   PROGRAMS nodes/imu_publisher.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
-#
+
+catkin_install_python(
+  #PROGRAMS nodes/${PROJECT_NAME} 
+  PROGRAMS nodes/navigate.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
 install(DIRECTORY launch/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
 )

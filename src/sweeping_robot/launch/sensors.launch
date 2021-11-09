@@ -1,11 +1,11 @@
 <launch>
         <!-- Load robot description and start state publisher-->
-    <param name="robot_description" textfile="$(find imu)/urdf/imu.urdf" />
+    <param name="robot_description" textfile="$(find sweeping_robot)/urdf/sensors.urdf" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
 
 
-    <node name="imu_publisher" pkg="imu" type="imu_publisher.py" respawn="false" output="screen" >
+    <node name="imu_publisher" pkg="sweeping_robot" type="imu_publisher.py" respawn="false" output="screen" >
     </node>
 
 		<!-- Start RPLIDAR sensor node which provides LaserScan data  -->
@@ -26,7 +26,7 @@
 		<!-- Start Google Cartographer node with custom configuration file-->
     <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
           -configuration_directory
-              $(find imu)/configuration_files
+              $(find sweeping_robot)/configuration_files
           -configuration_basename cartographer_lidar_2d.lua" output="screen">
     </node>
 
@@ -37,13 +37,13 @@
 
     <include file="$(find amcl)/examples/amcl_omni.launch" />
 
-   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find imu)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
-    <rosparam file="$(find imu)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find imu)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find imu)/config/global_costmap_params.yaml" command="load" /> 
-    <rosparam file="$(find imu)/config/base_local_planner_params.yaml" command="load" />
- </node>
 
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    	<rosparam file="$(find sweeping_robot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    	<rosparam file="$(find sweeping_robot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    	<rosparam file="$(find sweeping_robot)/config/local_costmap_params.yaml" command="load" />
+    	<rosparam file="$(find sweeping_robot)/config/global_costmap_params.yaml" command="load" /> 
+    	<rosparam file="$(find sweeping_robot)/config/base_local_planner_params.yaml" command="load" />
+ 	</node>
 
 </launch>
