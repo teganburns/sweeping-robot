@@ -7,28 +7,51 @@ map_type: costmap
 transform_tolerance: 0.2
 
 #Obstacle marking parameters
-obstacle_range: 2.5
-max_obstacle_height: 2.0
-raytrace_range: 3.0
+obstacle_range: 2.5 # Default 2.5
+max_obstacle_height: 0.1 # Default 2.0
+raytrace_range: 3.0 # Default 3.0
 
 #The footprint of the robot 
-footprint: [ [0.200, -0.0508], [0.1778, -0.0508], [0.1778, -0.1778], [-0.1905, -0.1778], [-0.254, 0], [-0.1905, 0.1778], [0.1778, 0.1778], [0.1778, 0.0508], [0.200, 0.0508] ]
+#footprint: [ [0.200, -0.0508], [0.1778, -0.0508], [0.1778, -0.1778], [-0.1905, -0.1778], [-0.254, 0], [-0.1905, 0.1778], [0.1778, 0.1778], [0.1778, 0.0508], [0.200, 0.0508] ]
+footprint: [ [0.200, -0.0508], [0.1500, -0.0508], [0.1500, -0.1500], [-0.1905, -0.1500], [-0.26, 0], [-0.1905, 0.1500], [0.1500, 0.1500], [0.1500, 0.0508], [0.200, 0.0508] ]
 
 #Inscribed and circumscribed radius 
 inscribed_radius: 0.2
 circumscribed_radius: 0.3
 
-#Cost function parameters
-inflation_radius: 0.4
-cost_scaling_factor: 10.0
+#Cost function parameters. Inflation Layer.
+inflation_radius: 0.25 # Default: 0.55
+cost_scaling_factor: 10.0 # Default: 10.0
 
 #The cost at which a cell is considered an obstacle when a map is read from the map_server
-lethal_cost_threshold: 100
+lethal_cost_threshold: 150 # Default 100
+unknown_cost_value: -1 # Default -1
 
 #Configuration for the sensors that the costmap will use to update a map
-#observation_sources: base_scan
+observation_sources: base_scan
 
-#base_scan: {sensor frame: scan, data_type: LaserScan, expected_update_rate: 1.5, observation_persistence: 0.0, marking: true, clearing: true}
+base_scan: {sensor frame: laser, topic: /scan, data_type: LaserScan, expected_update_rate: 1.5, observation_persistence: 0.0, marking: true, clearing: true}
 
+
+
+
+#static_layer:
+#    map_topic: /map
+#    subscribe_to_updates: true
+#plugins:
+#    - {name: inflation_layer,        type: "costmap_2d::InflationLayer"}
+#    - {name: obstacle_layer,         type: "costmap_2d::ObstacleLayer"}
+#
+#global_frame: map
+
+#local_costmap:
+#  ros__parameters:
+#    plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
+#    obstacle_layer:
+#      plugin: "nav2_costmap_2d::ObstacleLayer"
+#    voxel_layer:
+#      plugin: "nav2_costmap_2d::VoxelLayer"
+#    inflation_layer:
+#      plugin: "nav2_costmap_2d::InflationLayer"
 
 

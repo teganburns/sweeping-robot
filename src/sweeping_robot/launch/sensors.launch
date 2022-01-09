@@ -1,7 +1,8 @@
 <launch>
         <!-- Load robot description and start state publisher-->
-    <param name="robot_description" textfile="$(find sweeping_robot)/urdf/sensors.urdf" />
+    <param name="robot_description" command="xacro '$(find sweeping_robot)/urdf/sensors.xacro'" /> 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 
 
 
@@ -32,10 +33,6 @@
 
 		<!-- Additional node which converts Cartographer map into ROS occupancy grid map. Not used and can be skipped in this case -->
     <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros" type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
-
-
-
-    <include file="$(find amcl)/examples/amcl_omni.launch" />
 
 
    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

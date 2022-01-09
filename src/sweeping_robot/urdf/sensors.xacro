@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+
+<robot name="Tofu Robot" xmlns:xacro="http://www.ros.org/wiki/xacro">  
+
+  <xacro:include filename="$(find sweeping_robot)/urdf/materials.xacro" />
+
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.017915218140206787 0.02889736300747252 0.04686300272773365"/>
+      <mass value="9.197942335830444"/>
+      <inertia ixx="0.113794" ixy="-5e-06" ixz="4.7e-05" iyy="0.072574" iyz="0.000596" izz="0.166362"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 1.5708" xyz="0 -0.02 0"/>
+      <geometry>
+        <mesh filename="package://sweeping_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+	  <material name="red">
+		<color rgba="0.2 0.2 0.2 1.0"/>
+	  </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://sweeping_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasound_left">
+    <visual>
+      <origin xyz="0 0 0" />
+      <material name="black" />
+    </visual>
+  </link>
+
+  <link name="laser">
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.041" radius="0.0375" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="laser" />
+      <origin rpy="0 0 3.14" xyz="0.022 0.001 0.085" />
+  </joint>
+
+  <joint name="ultrasound_left_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="ultrasound_left" />
+    <origin rpy="0 0 0" xyz="0 0 0.05" />
+    <axis xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="imu_frame">
+    <visual>
+      <origin xyz="0 0 0" />
+      <material name="orange" />
+    </visual>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_frame" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </joint>
+
+</robot>
